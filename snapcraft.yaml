@@ -1,0 +1,27 @@
+name: dataclerk
+base: core18
+version: "0.1.0"
+summary: "A simple server for storing your data"
+description: |
+  A fast, reliable, small data remote logging tool with a very small 
+  footprint. `dataclerk` is similar to a log file, but you can send 
+  it messages over the web.
+
+  If Apache Kafka is too bulky for you, consider `dataclerk`.
+  
+  It's intended to be a zero-fuss solution that will easily get out
+  of your way when you outgrow it.
+
+confinement: strict
+grade: stable
+
+apps:
+  dataclerk:
+    command: dataclerk
+    plugs: [ network ]
+
+parts:
+  dataclerk:
+    source: .
+    plugin: rust
+    build-packages: [ build-essential ]
